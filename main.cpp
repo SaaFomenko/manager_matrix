@@ -5,8 +5,8 @@
 template <class T>
 void matrix_print(Matrix<T>& matrix)
 {
-	const unsigned int rows = matrix.getRows();
-	const unsigned int cols = matrix.getCols();
+	const unsigned int rows = matrix.sizeRows();
+	const unsigned int cols = matrix.sizeCols();
 
 	for (int i = 0; i < rows; ++i)
 	{
@@ -24,9 +24,7 @@ int main()
 	{
 		Matrix<int> m1(2, 4);
 		Matrix<char> mc(2, 2);
-
-		std::cout << "Create m1(2, 4).\n";
-		std::cout << "Create mc(3, 4).\n";
+		
 		m1[0][0] = 3;
 		m1[1][3] = 4;
 		mc[0][0] = 'a';
@@ -34,8 +32,18 @@ int main()
 		mc[1][0] = 'c';
 		mc[1][1] = 'D';
   
+		std::cout << "Create " << typeid(m1).name();
+		std::cout << " have size : " << m1.Size() << "\n";
 		matrix_print(m1);
+		std::cout << std::endl;
+
+		std::cout << "Create " << typeid(mc).name();
+		std::cout << " have size : " << mc.Size() << "\n";
 		matrix_print(mc);
+	}
+	catch (char* e)
+	{
+		std::cout << e << "\n";
 	}
 	catch (std::exception e)
 	{
